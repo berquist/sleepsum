@@ -1,11 +1,13 @@
 use lipsum::lipsum_words_with_rng;
 use rand::thread_rng;
+use std::process;
 use std::thread;
 use std::time;
 
 const SLEEP_TIME: u64 = 3;
 const NUM_WORDS: usize = 200;
 const NUM_LOOPS: u64 = 4;
+const EXIT_CODE: i32 = 5;
 
 fn main() {
     let duration = time::Duration::from_secs(SLEEP_TIME);
@@ -14,4 +16,5 @@ fn main() {
         println!("@loop {i}");
         println!("{}", lipsum_words_with_rng(thread_rng(), NUM_WORDS));
     }
+    process::exit(EXIT_CODE);
 }

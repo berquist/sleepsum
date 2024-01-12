@@ -5,10 +5,10 @@ workflow:
     - if: '$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"'
 
 stages:
-  - test
+  - mystage
 
-test:
-  stage: test
+run_cov:
+  stage: mystage
   image: docker.io/xd009642/tarpaulin:0.27.2
   script: |
     ./run_tarpaulin.sh

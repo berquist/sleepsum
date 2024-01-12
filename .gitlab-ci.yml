@@ -1,0 +1,20 @@
+---
+workflow:
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != "merge_request_event"'
+    - if: '$CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "merge_request_event"'
+
+stages:
+  - test
+
+test:
+  stage: test
+  image: docker.io/xd009642/tarpaulin:0.27.2
+  script: |
+    ./run_tarpaulin.sh
+  coverage: '/^\d+.\d+% coverage/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: cobertura.xml

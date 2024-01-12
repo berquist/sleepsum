@@ -1,0 +1,33 @@
+---
+fail_fast: false
+repos:
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v4.5.0"
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+  - repo: https://github.com/Mateusz-Grzelinski/actionlint-py
+    rev: "v1.6.26.11"
+    hooks:
+      - id: actionlint
+  # - repo: https://gitlab.com/smop/pre-commit-hooks
+  #   rev: "v1.0.0"
+  #   hooks:
+  #     - id: check-gitlab-ci
+  # - repo: https://gitlab.com/devopshq/gitlab-ci-linter
+  #   rev: "v1.0.6"
+  #   hooks:
+  #     - id: gitlab-ci-linter
+  # - repo: https://github.com/FalcoSuessgott/lint-gitlab-ci
+  #   rev: "v0.0.6"
+  #   hooks:
+  #     - id: gitlab-ci
